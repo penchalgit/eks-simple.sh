@@ -1,3 +1,5 @@
+# Source: https://gist.github.com/9b80db17492cee756871228d739da463
+
 ########################
 # Installing Istio CLI #
 ########################
@@ -5,6 +7,8 @@
 # Go to https://github.com/istio/istio/releases
 # Pick a release
 # Download and unpack the release, and move it to a directory set in the `PATH`
+
+# NOTE: If you already have `istioctl` from before, make sure to upgrade it to v1.5+ if it's older than that
 
 ###############################
 # Creating Kubernetes Cluster #
@@ -20,6 +24,9 @@
 # Installing Istio #
 ####################
 
+# NOTE: Make sure that you install `istioctl` v1.5+.
+# NOTE: If you already have `istioctl`, make sure that it is updated if it's older than v1.5.
+
 istioctl profile list
 
 istioctl profile dump demo
@@ -28,10 +35,6 @@ istioctl manifest apply \
     --set profile=demo
 
 kubectl get crds | grep 'istio.io'
-
-kubectl get crds \
-    | grep 'istio.io' \
-    | wc -l
 
 kubectl --namespace istio-system \
     get services
